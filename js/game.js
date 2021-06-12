@@ -32,8 +32,20 @@ function init(size) {
 
 function draw() {
   let clear = document.querySelector('.clear');
+  window.addEventListener('selectstart', (event) => event.preventDefault());
   boxes.forEach(function (box) {
     box.addEventListener('mouseover', () => {
+      if(rainbow){
+        let r = Math.floor(Math.random()*256)
+        let g = Math.floor(Math.random()*256)
+        let b = Math.floor(Math.random()*256)
+        color = `rgb(${r},${g},${b})`;
+      }
+      box.style.backgroundColor = color;
+    });
+  });
+  boxes.forEach(function (box) {
+    box.addEventListener('touchmove', () => {
       if(rainbow){
         let r = Math.floor(Math.random()*256)
         let g = Math.floor(Math.random()*256)
